@@ -5,6 +5,7 @@
   "description": "AI-powered TOS & Privacy Policy analyzer. Highlights concerning clauses and recommends tools to protect your privacy.",
   "permissions": [
     "activeTab",
+    "tabs",
     "storage",
     "sidePanel"
   ],
