@@ -87,24 +87,19 @@ async function analyzeText(text, url) {
 }
 
 function buildPrompt(text) {
-  return `You are a privacy and legal expert helping regular people understand a Terms of Service or Privacy Policy document. Your job is two-fold:
+  return `You are a privacy expert helping normal people understand a Terms of Service or Privacy Policy. Be concise — users want the gist, not a legal brief.
 
-1. **Key Points** - Give the user a clear, plain-English breakdown of what this policy actually says. Cover the important stuff a normal person would want to know before agreeing. Each key point should have a topic and a 1-2 sentence explanation.
+BREVITY IS CRITICAL. Every field should be as short as possible.
 
-2. **Concerns** - Flag specific clauses that are problematic, unusual, or worth watching out for. These are things that go beyond standard boilerplate — anything that could meaningfully affect the user's privacy, rights, or data.
+Produce two things:
 
-For key points, use topics like: "What they collect", "How they use your data", "Who they share it with", "Data retention", "Your rights", "Account deletion", "Policy changes", etc. Keep it to the most important 5-8 points.
+1. **Key Points** — What does this policy actually say? 4-6 bullet points max. Each "detail" must be ONE short sentence (under 20 words).
 
-For each concern, provide:
-- "title" - A short title
-- "severity" - One of: "high", "medium", "low"
-- "category" - One of: "data-collection", "data-sharing", "data-selling", "tracking", "legal-rights", "content-license", "account-termination", "policy-changes", "security", "children-privacy"
-- "quote" - The exact verbatim text from the document (1-2 sentences max)
-- "explanation" - Plain-English explanation of why this matters (1-2 sentences)
+2. **Concerns** — What's unusual, aggressive, or worth worrying about? Only flag things that go beyond standard boilerplate. Each "explanation" must be ONE short sentence (under 20 words). Keep the "quote" to the shortest meaningful excerpt.
 
 Also provide:
-- "summary" - A 2-3 sentence overall assessment written for a non-expert
-- "score" - A privacy score from 1 (very concerning) to 10 (very privacy-friendly)
+- "summary" — 2 sentences max. Plain English, no jargon.
+- "score" — Privacy score from 1 (terrible) to 10 (great)
 
 Respond ONLY with valid JSON in this exact format:
 {
