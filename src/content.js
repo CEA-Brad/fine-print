@@ -34,15 +34,36 @@
   }
 
   function extractPageText() {
-    // Get main content, preferring article/main elements
-    const selectors = ['article', 'main', '[role="main"]', '.content', '#content', '.post-content'];
+    // Clone the body so we can strip non-visible elements without affecting the page
+    const clone = document.body.cloneNode(true);
+
+    // Remove elements that don't contain readable content
+    const junkSelectors = 'script, style, noscript, svg, img, video, audio, canvas, iframe, template, [hidden], [aria-hidden="true"]';
+    clone.querySelectorAll(junkSelectors).forEach((el) => el.remove());
+
+    // Also remove nav/header/footer if there's a main content area
+    const mainContent = clone.querySelector('article, main, [role="main"]');
+    if (mainContent && mainContent.textContent.trim().length > 500) {
+      return cleanText(mainContent.textContent);
+    }
+
+    // Try other content selectors
+    const selectors = ['.content', '#content', '.post-content', '.policy-content', '.legal-content'];
     for (const selector of selectors) {
-      const el = document.querySelector(selector);
+      const el = clone.querySelector(selector);
       if (el && el.textContent.trim().length > 500) {
-        return el.textContent.trim();
+        return cleanText(el.textContent);
       }
     }
-    return document.body.textContent.trim();
+
+    return cleanText(clone.textContent);
+  }
+
+  function cleanText(text) {
+    return text
+      .replace(/\s+/g, ' ')    // collapse whitespace
+      .replace(/\n{3,}/g, '\n\n') // collapse blank lines
+      .trim();
   }
 
   function highlightConcerns(concerns) {
