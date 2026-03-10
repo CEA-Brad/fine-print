@@ -16,6 +16,14 @@
 
   let analysisState = 'idle'; // idle | detecting | analyzing | done | error
 
+  function isExtensionValid() {
+    try {
+      return !!chrome.runtime?.id;
+    } catch {
+      return false;
+    }
+  }
+
   function detectTOSPage() {
     const title = document.title.toLowerCase();
     const url = window.location.href.toLowerCase();
@@ -136,6 +144,7 @@
     `;
 
     badge.querySelector('.fine-print-badge-expand').addEventListener('click', () => {
+      if (!isExtensionValid()) return;
       chrome.runtime.sendMessage({ type: 'openSidePanel' });
     });
 
@@ -184,6 +193,7 @@
 
   async function run() {
     if (!detectTOSPage()) return;
+    if (!isExtensionValid()) return;
 
     analysisState = 'detecting';
 
@@ -218,7 +228,7 @@
       document.body.appendChild(badge);
       badge.querySelector('#fine-print-setup')?.addEventListener('click', (e) => {
         e.preventDefault();
-        chrome.runtime.openOptionsPage();
+        if (isExtensionValid()) chrome.runtime.openOptionsPage();
       });
       return;
     }
@@ -259,6 +269,7 @@
   }
 
   // Listen for manual trigger from popup
+  if (!isExtensionValid()) return;
   chrome.runtime.onMessage.addListener((msg) => {
     if (msg.type === 'manualAnalyze') {
       analysisState = 'idle'; // Reset state
