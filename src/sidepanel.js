@@ -22,7 +22,7 @@ async function loadResults() {
   }
 }
 
-function renderReport(result) {
+async function renderReport(result) {
   emptyState.style.display = 'none';
   loadingState.style.display = 'none';
   reportEl.style.display = 'block';
@@ -49,7 +49,7 @@ function renderReport(result) {
 
   // Render recommendations
   if (window.FinePrintRecommendations) {
-    const recs = window.FinePrintRecommendations.getRecommendations(result.concerns || []);
+    const recs = await window.FinePrintRecommendations.getRecommendations(result.concerns || []);
     renderRecommendations(recs);
   }
 }
