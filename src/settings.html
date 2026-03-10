@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fine Print - Settings</title>
+  <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Fine Print Settings</h1>
+      <p class="subtitle">Configure your AI provider and API key</p>
+    </header>
+
+    <form id="settings-form">
+      <section class="form-section">
+        <h2>AI Provider</h2>
+        <div class="radio-group">
+          <label class="radio-card">
+            <input type="radio" name="provider" value="anthropic" checked>
+            <div class="radio-content">
+              <div class="radio-title">Anthropic (Claude)</div>
+              <div class="radio-desc">Recommended. Uses Claude for high-quality analysis.</div>
+            </div>
+          </label>
+          <label class="radio-card">
+            <input type="radio" name="provider" value="openai">
+            <div class="radio-content">
+              <div class="radio-title">OpenAI (GPT)</div>
+              <div class="radio-desc">Uses GPT models for analysis.</div>
+            </div>
+          </label>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h2>API Key</h2>
+        <p class="field-desc">Your key is stored locally and never sent anywhere except directly to your chosen AI provider.</p>
+        <div class="input-group">
+          <input type="password" id="api-key" placeholder="sk-..." autocomplete="off">
+          <button type="button" id="toggle-key" class="btn-icon" title="Show/hide key">👁️</button>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <h2>Model <span class="optional">(optional)</span></h2>
+        <p class="field-desc">Override the default model. Leave blank for the recommended default.</p>
+        <input type="text" id="model-id" placeholder="e.g. claude-sonnet-4-20250514">
+        <div id="model-hint" class="hint"></div>
+      </section>
+
+      <div class="actions">
+        <button type="submit" class="btn btn-primary">Save Settings</button>
+        <span id="save-status" class="save-status"></span>
+      </div>
+    </form>
+
+    <section class="form-section info-section">
+      <h2>How it works</h2>
+      <ol>
+        <li>Fine Print detects when you visit a Terms of Service or Privacy Policy page.</li>
+        <li>The page text is sent to your AI provider for analysis.</li>
+        <li>Concerning clauses are highlighted directly on the page.</li>
+        <li>A summary with recommendations appears in the side panel.</li>
+      </ol>
+      <p class="note">Your API key is stored only in your browser's local storage and is sent only to the API provider you select. Fine Print has no backend server.</p>
+    </section>
+  </div>
+
+  <script src="settings.js"></script>
+</body>
+</html>

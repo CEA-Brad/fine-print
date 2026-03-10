@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Fine Print",
+  "version": "1.0.0",
+  "description": "AI-powered TOS & Privacy Policy analyzer. Highlights concerning clauses and recommends tools to protect your privacy.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "https://api.anthropic.com/*",
+    "https://api.openai.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/content.js"],
+      "css": ["src/content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "side_panel": {
+    "default_path": "src/sidepanel.html"
+  },
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "Fine Print"
+  },
+  "options_page": "src/settings.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

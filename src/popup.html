@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fine Print</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Fine Print</h1>
+      <p class="subtitle">AI-Powered TOS Analyzer</p>
+    </header>
+
+    <div id="no-key" class="state" style="display:none">
+      <div class="icon">🔑</div>
+      <p>Add your API key to get started.</p>
+      <button id="open-settings" class="btn btn-primary">Open Settings</button>
+    </div>
+
+    <div id="not-tos" class="state" style="display:none">
+      <div class="icon">📄</div>
+      <p>This page doesn't look like a TOS or Privacy Policy.</p>
+      <button id="force-analyze" class="btn btn-secondary">Analyze Anyway</button>
+    </div>
+
+    <div id="analyzing" class="state" style="display:none">
+      <div class="spinner"></div>
+      <p>Analyzing document...</p>
+    </div>
+
+    <div id="results" class="state" style="display:none">
+      <div class="score-row">
+        <div id="score-badge" class="score-badge">?</div>
+        <div class="score-info">
+          <div class="score-label">Privacy Score</div>
+          <div id="concern-count" class="concern-count"></div>
+        </div>
+      </div>
+      <div id="summary" class="summary"></div>
+      <div id="concerns-preview" class="concerns-preview"></div>
+      <button id="open-details" class="btn btn-primary">View Full Report</button>
+    </div>
+
+    <div id="error" class="state" style="display:none">
+      <div class="icon">⚠️</div>
+      <p id="error-msg"></p>
+      <button id="retry" class="btn btn-secondary">Retry</button>
+    </div>
+
+    <footer>
+      <a href="#" id="footer-settings">Settings</a>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

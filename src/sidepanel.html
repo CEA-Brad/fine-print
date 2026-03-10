@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fine Print - Report</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Fine Print</h1>
+    </header>
+
+    <div id="empty" class="state">
+      <p>Navigate to a Terms of Service or Privacy Policy page to get started.</p>
+    </div>
+
+    <div id="loading" class="state" style="display:none">
+      <div class="spinner"></div>
+      <p>Analyzing document...</p>
+    </div>
+
+    <div id="report" style="display:none">
+      <section class="score-section">
+        <div id="score-ring" class="score-ring">
+          <span id="score-value">?</span>
+        </div>
+        <div class="score-meta">
+          <div class="score-label">Privacy Score</div>
+          <div id="score-summary" class="score-summary"></div>
+        </div>
+      </section>
+
+      <section class="concerns-section">
+        <h2>Concerns <span id="concerns-count" class="count-badge"></span></h2>
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="high">High</button>
+          <button class="filter-btn" data-filter="medium">Medium</button>
+          <button class="filter-btn" data-filter="low">Low</button>
+        </div>
+        <div id="concerns-list" class="concerns-list"></div>
+      </section>
+
+      <section class="recommendations-section">
+        <h2>Recommended Tools</h2>
+        <p class="section-desc">Based on the concerns found, these tools can help protect your privacy.</p>
+        <div id="recommendations-list" class="recommendations-list"></div>
+      </section>
+    </div>
+  </div>
+
+  <script src="recommendations.js"></script>
+  <script src="sidepanel.js"></script>
+</body>
+</html>
