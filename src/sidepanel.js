@@ -37,6 +37,9 @@ function renderReport(result) {
 
   document.getElementById('score-summary').textContent = result.summary || '';
 
+  // Key points
+  renderKeyPoints(result.keyPoints || []);
+
   // Concern count
   const count = result.concerns?.length || 0;
   document.getElementById('concerns-count').textContent = count;
@@ -48,6 +51,23 @@ function renderReport(result) {
   if (window.FinePrintRecommendations) {
     const recs = window.FinePrintRecommendations.getRecommendations(result.concerns || []);
     renderRecommendations(recs);
+  }
+}
+
+function renderKeyPoints(keyPoints) {
+  const list = document.getElementById('key-points-list');
+  list.innerHTML = '';
+
+  if (keyPoints.length === 0) return;
+
+  for (const point of keyPoints) {
+    const item = document.createElement('div');
+    item.className = 'key-point-item';
+    item.innerHTML = `
+      <div class="key-point-topic">${escapeHtml(point.topic)}</div>
+      <div class="key-point-detail">${escapeHtml(point.detail)}</div>
+    `;
+    list.appendChild(item);
   }
 }
 

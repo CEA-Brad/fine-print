@@ -90,6 +90,43 @@ header h1 {
   color: #bbb;
 }
 
+/* Key points section */
+.key-points-section {
+  margin-bottom: 24px;
+}
+
+.key-points-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.key-point-item {
+  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.key-point-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.key-point-topic {
+  font-size: 12px;
+  font-weight: 700;
+  color: #5dade2;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.key-point-detail {
+  font-size: 13px;
+  color: #ccc;
+  line-height: 1.5;
+}
+
 /* Concerns section */
 .concerns-section {
   margin-bottom: 24px;

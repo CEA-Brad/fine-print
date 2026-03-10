@@ -87,23 +87,35 @@ async function analyzeText(text, url) {
 }
 
 function buildPrompt(text) {
-  return `You are a privacy and legal expert analyzing a Terms of Service or Privacy Policy document. Analyze the following document and identify concerning clauses.
+  return `You are a privacy and legal expert helping regular people understand a Terms of Service or Privacy Policy document. Your job is two-fold:
 
-For each concern found, provide:
-1. "title" - A short title for the concern
-2. "severity" - One of: "high", "medium", "low"
-3. "category" - One of: "data-collection", "data-sharing", "data-selling", "tracking", "legal-rights", "content-license", "account-termination", "policy-changes", "security", "children-privacy"
-4. "quote" - The exact text from the document that is concerning (keep it to 1-2 sentences max, must be a verbatim quote)
-5. "explanation" - A plain-English explanation of why this is concerning (1-2 sentences)
+1. **Key Points** - Give the user a clear, plain-English breakdown of what this policy actually says. Cover the important stuff a normal person would want to know before agreeing. Each key point should have a topic and a 1-2 sentence explanation.
+
+2. **Concerns** - Flag specific clauses that are problematic, unusual, or worth watching out for. These are things that go beyond standard boilerplate — anything that could meaningfully affect the user's privacy, rights, or data.
+
+For key points, use topics like: "What they collect", "How they use your data", "Who they share it with", "Data retention", "Your rights", "Account deletion", "Policy changes", etc. Keep it to the most important 5-8 points.
+
+For each concern, provide:
+- "title" - A short title
+- "severity" - One of: "high", "medium", "low"
+- "category" - One of: "data-collection", "data-sharing", "data-selling", "tracking", "legal-rights", "content-license", "account-termination", "policy-changes", "security", "children-privacy"
+- "quote" - The exact verbatim text from the document (1-2 sentences max)
+- "explanation" - Plain-English explanation of why this matters (1-2 sentences)
 
 Also provide:
-- "summary" - A 2-3 sentence overall assessment of the document
+- "summary" - A 2-3 sentence overall assessment written for a non-expert
 - "score" - A privacy score from 1 (very concerning) to 10 (very privacy-friendly)
 
 Respond ONLY with valid JSON in this exact format:
 {
   "summary": "...",
   "score": 5,
+  "keyPoints": [
+    {
+      "topic": "What they collect",
+      "detail": "..."
+    }
+  ],
   "concerns": [
     {
       "title": "...",
