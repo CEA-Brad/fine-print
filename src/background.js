@@ -62,9 +62,9 @@ async function analyzeText(text, url) {
   let result;
 
   if (apiProvider === 'openai') {
-    result = await callOpenAI(apiKey, modelId || 'gpt-4o', prompt);
+    result = await callOpenAI(apiKey, modelId || 'gpt-5.4', prompt);
   } else {
-    result = await callClaude(apiKey, modelId || 'claude-sonnet-4-20250514', prompt);
+    result = await callClaude(apiKey, modelId || 'claude-sonnet-4-6', prompt);
   }
 
   // Cache results

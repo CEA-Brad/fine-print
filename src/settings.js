@@ -8,8 +8,8 @@ const saveStatus = document.getElementById('save-status');
 const modelHint = document.getElementById('model-hint');
 
 const defaults = {
-  anthropic: 'claude-sonnet-4-20250514',
-  openai: 'gpt-4o',
+  anthropic: 'claude-sonnet-4-6',
+  openai: 'gpt-5.4',
 };
 
 // Load saved settings
