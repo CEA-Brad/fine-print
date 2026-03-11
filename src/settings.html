@@ -66,6 +66,36 @@
       </ol>
       <p class="note">Your API key is stored only in your browser's local storage and is sent only to the API provider you select. Fine Print has no backend server.</p>
     </section>
+
+    <section class="form-section info-section">
+      <h2>Verify this build</h2>
+      <p class="field-desc">Confirm that this extension matches the open-source code on GitHub.</p>
+      <div id="verify-loading">Loading build info...</div>
+      <div id="verify-info" style="display:none">
+        <table class="verify-table">
+          <tr>
+            <td class="verify-label">Version</td>
+            <td id="verify-version"></td>
+          </tr>
+          <tr>
+            <td class="verify-label">Commit</td>
+            <td><a id="verify-commit" href="#" target="_blank" rel="noopener"></a></td>
+          </tr>
+          <tr>
+            <td class="verify-label">Built at</td>
+            <td id="verify-built-at"></td>
+          </tr>
+        </table>
+        <details class="hash-details">
+          <summary>File hashes (SHA-256)</summary>
+          <pre id="verify-hashes"></pre>
+        </details>
+        <p class="note">To verify: clone the repo at the commit above, run <code>shasum -a 256</code> on each file, and compare the hashes. See the <a href="https://github.com/CEA-Brad/fine-print#verify" target="_blank" rel="noopener">README</a> for full instructions.</p>
+      </div>
+      <div id="verify-missing" style="display:none">
+        <p class="note">Build info not found. This is a development build loaded from source. Run <code>./package.sh</code> to generate a verifiable build.</p>
+      </div>
+    </section>
   </div>
 
   <script src="settings.js"></script>

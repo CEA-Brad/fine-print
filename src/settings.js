@@ -41,6 +41,35 @@ function updateModelHint() {
   modelHint.textContent = `Default: ${defaults[provider]}`;
 }
 
+// Load build verification info
+(async function loadBuildInfo() {
+  try {
+    const url = chrome.runtime.getURL('src/build-info.json');
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Not found');
+    const info = await res.json();
+
+    document.getElementById('verify-loading').style.display = 'none';
+    document.getElementById('verify-info').style.display = 'block';
+
+    document.getElementById('verify-version').textContent = info.version;
+
+    const commitLink = document.getElementById('verify-commit');
+    commitLink.textContent = info.commitShort;
+    commitLink.href = `${info.repoUrl}/commit/${info.commit}`;
+
+    document.getElementById('verify-built-at').textContent = info.builtAt;
+
+    const hashLines = Object.entries(info.fileHashes)
+      .map(([file, hash]) => `${hash}  ${file}`)
+      .join('\n');
+    document.getElementById('verify-hashes').textContent = hashLines;
+  } catch {
+    document.getElementById('verify-loading').style.display = 'none';
+    document.getElementById('verify-missing').style.display = 'block';
+  }
+})();
+
 // Save settings
 form.addEventListener('submit', (e) => {
   e.preventDefault();

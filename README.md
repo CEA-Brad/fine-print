@@ -63,6 +63,35 @@ fine-print/
 └── README.md
 ```
 
+## Verify
+
+You can verify that the Chrome Web Store version matches the open-source code:
+
+1. Open Fine Print settings and scroll to **Verify this build**
+2. Note the **commit hash** and **file hashes**
+3. Clone the repo at that commit:
+   ```
+   git clone https://github.com/CEA-Brad/fine-print.git
+   cd fine-print
+   git checkout <commit-hash>
+   ```
+4. Generate hashes and compare:
+   ```
+   shasum -a 256 manifest.json src/*.js src/*.css src/*.html
+   ```
+
+If the hashes match, you're running the exact code from this repo.
+
+### Building from source
+
+To package a verifiable build yourself:
+
+```
+./package.sh
+```
+
+This stamps the git commit SHA, generates file hashes, and creates a zip ready for the Chrome Web Store.
+
 ## Contributing
 
 Contributions welcome! Some ideas:
