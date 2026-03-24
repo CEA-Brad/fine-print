@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Fine Print</title>
+  <meta name="description" content="Privacy Policy for the Fine Print Chrome extension.">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #0f0f1a;
+      --surface: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.08);
+      --text: #e0e0e0;
+      --text-muted: #888;
+      --accent: #5dade2;
+      --accent-hover: #4a9cd6;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    nav {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .content {
+      padding: 60px 0 80px;
+    }
+
+    .content h1 {
+      font-size: 36px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .last-updated {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    .content h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-top: 40px;
+      margin-bottom: 12px;
+    }
+
+    .content p, .content li {
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .content ul {
+      padding-left: 24px;
+      margin-bottom: 16px;
+    }
+
+    .content li {
+      margin-bottom: 8px;
+    }
+
+    .content strong {
+      color: #fff;
+    }
+
+    .highlight-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin: 24px 0;
+    }
+
+    .highlight-box p {
+      margin-bottom: 0;
+    }
+
+    footer {
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: #555;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      .content h1 { font-size: 28px; }
+      .content h2 { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="/" class="nav-brand">Fine Print</a>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="https://github.com/CEA-Brad/fine-print">GitHub</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <p class="last-updated">Last updated: March 24, 2026</p>
+
+      <div class="highlight-box">
+        <p><strong>The short version:</strong> Fine Print does not collect, store, or transmit any of your data to us. The extension runs entirely in your browser. We have no backend server, no analytics, and no tracking.</p>
+      </div>
+
+      <h2>What information Fine Print accesses</h2>
+      <p>When you visit a page that Fine Print identifies as a Terms of Service, Privacy Policy, or similar legal document, the extension extracts the text content of that page. This text is used solely to send to your chosen AI provider for analysis.</p>
+      <p>Fine Print also accesses:</p>
+      <ul>
+        <li><strong>The current page URL</strong> — used as a cache key so you don't re-analyze the same page unnecessarily.</li>
+        <li><strong>Your API key</strong> — entered by you in the extension settings, stored locally in your browser via Chrome's storage API.</li>
+        <li><strong>Your provider and model preferences</strong> — stored locally in your browser.</li>
+      </ul>
+
+      <h2>How your data is used</h2>
+      <p>Page text is sent directly from your browser to the AI provider you select (Anthropic or OpenAI) for analysis. Fine Print uses a "bring your own key" (BYOK) model — your API key is sent only to the provider you chose, and the request goes directly from your browser to their API. There is no intermediary server.</p>
+      <p>Analysis results (privacy score, concerns, key points) are cached in your browser's session storage and are automatically cleared when you close your browser.</p>
+
+      <h2>Third-party services</h2>
+      <p>Fine Print communicates with the following third-party services:</p>
+      <ul>
+        <li><strong>Anthropic API</strong> (api.anthropic.com) — if you select Claude as your AI provider. Subject to <a href="https://www.anthropic.com/privacy" style="color: var(--accent);">Anthropic's Privacy Policy</a>.</li>
+        <li><strong>OpenAI API</strong> (api.openai.com) — if you select GPT as your AI provider. Subject to <a href="https://openai.com/privacy" style="color: var(--accent);">OpenAI's Privacy Policy</a>.</li>
+        <li><strong>GitHub Pages</strong> (cea-brad.github.io) — to fetch product recommendation data (e.g., suggested privacy tools). No user data is sent in this request.</li>
+      </ul>
+
+      <h2>Data storage</h2>
+      <p>All data is stored locally in your browser using Chrome's storage API:</p>
+      <ul>
+        <li><strong>Persistent storage</strong> (survives browser restarts): your API key, provider choice, custom model ID, and cached recommendation data.</li>
+        <li><strong>Session storage</strong> (cleared on browser close): analysis results for pages you've visited.</li>
+      </ul>
+      <p>No data is ever sent to or stored on any server operated by Fine Print.</p>
+
+      <h2>Data collection and tracking</h2>
+      <p>Fine Print does <strong>not</strong>:</p>
+      <ul>
+        <li>Collect any analytics or telemetry</li>
+        <li>Use cookies or tracking pixels</li>
+        <li>Record your browsing history</li>
+        <li>Profile your behavior</li>
+        <li>Share data with any party other than your selected AI provider</li>
+        <li>Transmit data to any server we operate</li>
+      </ul>
+
+      <h2>Permissions</h2>
+      <p>Fine Print requests the following browser permissions:</p>
+      <ul>
+        <li><strong>activeTab</strong> — to detect if the current page is a legal document and to extract its text for analysis.</li>
+        <li><strong>tabs</strong> — to read the active tab's URL and update the extension badge.</li>
+        <li><strong>storage</strong> — to save your settings and cache analysis results locally.</li>
+        <li><strong>sidePanel</strong> — to display the detailed analysis report in Chrome's side panel.</li>
+        <li><strong>Host permissions</strong> for api.anthropic.com, api.openai.com, and cea-brad.github.io — to make API requests to your AI provider and fetch recommendation data.</li>
+      </ul>
+
+      <h2>Open source</h2>
+      <p>Fine Print is fully open source under the MIT License. You can inspect the complete source code at <a href="https://github.com/CEA-Brad/fine-print" style="color: var(--accent);">github.com/CEA-Brad/fine-print</a>. The extension includes a build verification system that lets you confirm the installed version matches the public source code.</p>
+
+      <h2>Changes to this policy</h2>
+      <p>If this privacy policy is updated, the changes will be reflected on this page with an updated date. Since Fine Print is open source, all changes are visible in the project's git history.</p>
+
+      <h2>Contact</h2>
+      <p>If you have questions about this privacy policy, please open an issue on the <a href="https://github.com/CEA-Brad/fine-print/issues" style="color: var(--accent);">GitHub repository</a>.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>Fine Print is open source under the <a href="https://github.com/CEA-Brad/fine-print/blob/main/LICENSE">MIT License</a>.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
